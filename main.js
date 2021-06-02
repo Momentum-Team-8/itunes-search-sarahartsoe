@@ -48,10 +48,10 @@ button.addEventListener('click', (event) => {
 })
 
 function getContent(){
-    let url = 'https://itunes.apple.com/search?term='+input.value
+    let url = 'https://proxy-itunes-api.glitch.me/search?term='+input.value
     fetch(url)
     .then( data => data.json())
     .then( json => {
-        
+
     })
 }
