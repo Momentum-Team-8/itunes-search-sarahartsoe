@@ -1,5 +1,5 @@
 // creating a music search field. when a use hits "search", the page will be fetching data
-// from the itunes API. The search results will then be diaplying on the page with 
+// from the itunes API. The search results will then be diaplying on the page with
 // some info like: Song Title, Artist, Name of Album
 
 // fetch will make a GET request then use POST method to display results
@@ -39,19 +39,48 @@
 
 // Try 2 starts here:
 
-let button = document.querySelector("#submit")
-let input = document.querySelector("#search")
-let output = document.querySelector("#output")
+let button = document.querySelector("#submit");
+let input = document.querySelector("#search");
+let output = document.querySelector("#output");
 
-button.addEventListener('click', (event) => {
-    getContent()
-})
+button.addEventListener("click", (event) => {
+  getContent();
+});
 
-function getContent(){
-    let url = 'https://proxy-itunes-api.glitch.me/search?term='+input.value
-    fetch(url)
-    .then( data => data.json())
-    .then( json => {
+function getContent() {
+  let url = "https://proxy-itunes-api.glitch.me/search?term=" + input.value + "&limit=15&media=music&entity=song";
+  fetch(url)
+    .then((data) => data.json())
+    .then((json) => {
+      let allSongs = "";
+      json.results.forEach((song) => {
+        allSongs += `
+            <div class="card">
+            <div class="card-image">
+            </div>
+            <div class="card-content">
+                <div class="media">
+                <div class="media-left">
+                    <img src="${song.artworkUrl100}" alt="Placeholder image">
+                </div>
+                <div class="media-content">
+                    <p class="title is-4">${song.artistName}</p>
+                    <p class="subtitle is-6">${song.trackName}</p>
+                </div>
+                </div>
 
-    })
+                <div class="content">
+                <audio id="audio-player" controls="controls" src="${song.previewUrl}" type="audio/mpeg">
+                </div>
+            </div>
+            </div>
+            `;
+      });
+      output.innerHTML = allSongs
+    });
 }
+
+
+// // <figure class="image is-48x48">
+// <img src="${song.artworkUrl100}" alt="Placeholder image">
+// </figure>
