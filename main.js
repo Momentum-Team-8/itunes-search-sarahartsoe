@@ -1,44 +1,3 @@
-// creating a music search field. when a use hits "search", the page will be fetching data
-// from the itunes API. The search results will then be diaplying on the page with
-// some info like: Song Title, Artist, Name of Album
-
-// fetch will make a GET request then use POST method to display results
-//  1. create a function to render search results (getContent)
-// 2. add event listener to call on search results function
-// 3. create a function which will play a song once it is a click on
-// 4.? cerate a function to clear results or will searching a new artist just clear and display?
-
-// const url = 'https://itunes.apple.com/search?term='
-// const form = document.querySelector('#search-form')
-
-// form.addEventListener('submit', event => {
-//     event.preventDefault()
-//     getContent()
-// })
-
-// function getContent(search, artist) {
-//     const artist = document.getElementById('search-form').value
-//     fetch(url + artist)
-//     .then((response) => response.json())
-//     .then((data) => {
-//         for (let artist of data) {
-//             console.log(data)
-//         }
-//     })
-// }
-
-// function getContent(search) {
-//     fetch(url)
-//     .then((response) => response.json())
-//     .then((data) => {
-//         for (let song of data) {
-//             renderSongs()
-//         }
-//     })
-// }
-
-// Try 2 starts here:
-
 let button = document.querySelector("#submit");
 let input = document.querySelector("#search");
 let output = document.querySelector("#output");
@@ -61,7 +20,7 @@ function getContent() {
             <div class="card-content">
                 <div class="media">
                 <div class="media-left">
-                    <img src="${song.artworkUrl100}" alt="Placeholder image">
+                    <img src="${song.artworkUrl100}" alt="Album Artwork">
                 </div>
                 <div class="media-content">
                     <p class="title is-4">${song.artistName}</p>
@@ -80,7 +39,7 @@ function getContent() {
     });
 }
 
-
-// // <figure class="image is-48x48">
-// <img src="${song.artworkUrl100}" alt="Placeholder image">
-// </figure>
+let press = document.querySelector('.btn')
+press.addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark-mode')
+})
