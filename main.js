@@ -7,7 +7,7 @@ button.addEventListener("click", (event) => {
 });
 
 function getContent() {
-  let url = "https://proxy-itunes-api.glitch.me/search?term=" + input.value + "&limit=15&media=music&entity=song";
+  let url = "https://proxy-itunes-api.glitch.me/search?term=" + input.value + "&limit=20&media=music&entity=song";
   fetch(url)
     .then((data) => data.json())
     .then((json) => {
